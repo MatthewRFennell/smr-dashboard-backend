@@ -3,8 +3,8 @@ const port = process.env.PORT || 3000
 
 const app = express()
 
-app.get("/", (req, res) => {
-	res.send("Hello world")
+app.get("/cars", (req, res) => {
+	res.json({ name: "#92 SpeedyMite Racing })
 })
 
 app.listen(port, () => {
