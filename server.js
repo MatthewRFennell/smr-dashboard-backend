@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000
 const app = express()
 
 app.get("/cars", (req, res) => {
-	res.json({ name: "#92 SpeedyMite Racing })
+	res.json({ name: "#92 SpeedyMite Racing" })
 })
 
 app.listen(port, () => {
