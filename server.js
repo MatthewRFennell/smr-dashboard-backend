@@ -2,7 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const port = process.env.PORT || 3000
 const mongo = require("mongodb")
-const uri = "mongodb+srv://matthew:Yq3gdiOOCgVRY411@smr-dashboard.wbqeq.mongodb.net/smr-dashboard?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI
 const client = new mongo.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const app = express()
 app.use(cors())
