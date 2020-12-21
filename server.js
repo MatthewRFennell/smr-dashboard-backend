@@ -7,7 +7,7 @@ const app = express()
 app.use(cors())
 
 app.get("/cars", (req, res) => {
-	res.json({ name: "#92 SpeedyMite Racing" })
+	res.json([{ name: "#92 SpeedyMite Racing" }])
 })
 
 app.listen(port, () => {
