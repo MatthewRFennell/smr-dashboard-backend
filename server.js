@@ -24,7 +24,9 @@ app.post("/sessions", (req, res) => {
 		const session = { name: req.name, cars: [] }
 		collection.insertOne(session, (err, mongoRes) => {
 			if (err) throw err
-			res.json(mongoRes)
+			mongoRes.toArray((err, mySession) => {
+				res.json(mySession)
+			})
 		})
 	})
 })
