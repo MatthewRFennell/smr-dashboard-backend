@@ -5,10 +5,9 @@ const mongo = require("mongodb")
 const bodyParser = require("body-parser")
 const uri = process.env.MONGODB_URI
 const client = new mongo.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const jsonParser = bodyParser.json()
 const app = express()
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
 
 app.get("/sessions", (req, res) => {
 	client.connect(err => {
@@ -21,7 +20,7 @@ app.get("/sessions", (req, res) => {
 	})
 })
 
-app.post("/sessions", (req, res) => {
+app.post("/sessions", jsonParser, (req, res) => {
 	client.connect(err => {
 		const collection = client.db("dashboard").collection("sessions")
 		const session = { name: req.body.name, cars: [] }
