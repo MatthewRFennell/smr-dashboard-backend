@@ -21,7 +21,7 @@ app.get("/sessions", (req, res) => {
 app.post("/sessions", (req, res) => {
 	client.connect(err => {
 		const collection = client.db("dashboard").collection("sessions")
-		const session = { name: req.name, cars: [] }
+		const session = { name: req.body.name, cars: [] }
 		console.log(req)
 		console.log(req.name)
 		collection.insertOne(session, (err, mongoRes) => {
