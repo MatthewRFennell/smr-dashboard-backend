@@ -22,10 +22,11 @@ app.post("/sessions", (req, res) => {
 	client.connect(err => {
 		const collection = client.db("dashboard").collection("sessions")
 		const session = { name: req.name, cars: [] }
-		collection.insertOne(session, (err, mongoRes) => {
-			if (err) throw err
-			res.json(mongoRes.insertedId)
-		})
+		res.json(req)
+		//collection.insertOne(session, (err, mongoRes) => {
+		//	if (err) throw err
+		//	res.json(mongoRes.insertedId)
+		//})
 	})
 })
 
