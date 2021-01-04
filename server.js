@@ -40,7 +40,7 @@ app.get("/sessions/:sessionId/cars/:carNumber", (req, res) => {
 	client.connect(err => {
 		const collection = client.db("dashboard").collection("sessions")
 		collection.findOne({"_id": mongo.ObjectID(req.params.sessionId)}, (err, session) => {
-			res.json(session.cars.filter((car) => {
+			res.json(session.cars.find((car) => {
 				return car.number == req.params.carNumber
 			}))
 		})
