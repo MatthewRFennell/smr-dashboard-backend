@@ -2,10 +2,13 @@ const express = require("express")
 const cors = require("cors")
 const port = process.env.PORT || 3000
 const mongo = require("mongodb")
+const bodyParser = require("body-parser")
 const uri = process.env.MONGODB_URI
 const client = new mongo.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const app = express()
 app.use(cors())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 app.get("/sessions", (req, res) => {
 	client.connect(err => {
